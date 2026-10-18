@@ -1,5 +1,10 @@
 macro(SetupBoost)
-    find_package(Boost 1.89.0 COMPONENTS system random filesystem regex thread chrono date_time python unit_test_framework)
+    if(POLICY CMP0167)
+        cmake_policy(SET CMP0167 NEW) # use Boost's own package config, FindBoost module is removed
+    endif()
+    # "algorithm" is header-only: it must be listed as a component so that the
+    # Boost CMake package config defines the Boost::algorithm target
+    find_package(Boost 1.89.0 COMPONENTS system random filesystem regex thread chrono date_time python unit_test_framework algorithm)
 
     if(NOT Boost_FOUND)
         find_package (Threads)

@@ -1,5 +1,5 @@
 #define BOOST_TEST_MODULE spps core test
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <tools/dotreflection.h>
 #include <iostream>
 #include <math.h>
